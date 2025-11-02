@@ -4,16 +4,16 @@ theme: gaia
 size: 16:9
 paginate: true
 headingDivider: 2
-header: 【連続講座1】デザインパターンを学び、ソフトウェア設計に生かそう
-footer: 2024 @juraruming
+header: デザインパターンをソフトウェア設計に生かそう
+footer: 2025 @juraruming
 style: |
 ---
-# 【連続講座1】デザインパターンを学び、ソフトウェア設計に生かそう
-Adapter・Factory Method・Singleton
+# デザインパターンをソフトウェア設計に生かそう（2025年11月）
+Factory Method, Singleton, Strategy, Facade, Observer, State
 
 パーソルクロステクノロジー株式会社
 エンジニアリング事業管掌　設計統括本部
-第2電子・制御設計本部　第1設計部　4G　阿部耕二
+第2電子・制御設計本部　第1設計部　5G　阿部耕二
 
 <!--
 _class: lead
@@ -28,9 +28,14 @@ footer: ""
 - 設計、してますか?
 - 良い設計とはどういう設計か?
 - デザインパターンの学び方のススメ
-- Adapter
 - Factory Method
 - Singleton
+- Strategy
+
+# 目次
+- Facade
+- Observer
+- State
 - 参考資料
 
 <!--
@@ -42,7 +47,7 @@ _footer: ""
 - 名前: 阿部　耕二（あべ　こうじ）
 - 所属: パーソルクロステクノロジー株式会社
 エンジニアリング事業管掌　設計統括本部
-第2電子・制御設計本部　第1設計部　4G
+第2電子・制御設計本部　第1設計部　5G
 - 医療機器の組込みソフトウェア開発。C言語。
 - 趣味: 宇宙開発（[リーマンサットプロジェクト](https://www.rymansat.com/)広報メンバー）
 - LAPRASポートフォリオ: https://lapras.com/public/k-abe

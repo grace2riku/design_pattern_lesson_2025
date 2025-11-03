@@ -94,10 +94,7 @@ $ java Main
 _footer: "" 
 -->
 * 講座のGitHubリポジトリ
-https://github.com/grace2riku/design_pattern_lesson
-
-* 今回の講座のディレクトリ
-https://github.com/grace2riku/design_pattern_lesson/tree/main/lesson_1
+https://github.com/grace2riku/design_pattern_lesson_2025
 
 * 参考資料1　ソースコードのダウンロード先
 [Java言語で学ぶデザインパターン入門　第3版](https://www.hyuki.com/dp/)
@@ -275,7 +272,7 @@ _footer: ""
 ![bg right width:630 height:500px](img/Factory%20Methodサンプルプログラム.png)
 
 サンプルプログラムのディレクトリ
-https://github.com/grace2riku/design_pattern_lesson/tree/main/lesson_1/Factory_Method
+https://github.com/grace2riku/design_pattern_lesson_2025/tree/main/Factory_Method
 
 ---
 <!--
@@ -297,7 +294,7 @@ $ java Main
 <!--
 _footer: "" 
 -->
-Adapterサンプルプログラムの実行結果
+Factory Methodサンプルプログラムの実行結果
 
 ```
 $ java Main
@@ -325,7 +322,7 @@ BusinessCard [owner=Riku Abe]を使います。
 <!--
 _footer: "" 
 -->
-Adapterサンプルプログラムの実行結果
+Factory Methodサンプルプログラムの実行結果
 
 * IDCardのFactoryは参考資料1のサンプルコード
 * BussinesCardのFactoryは今回追加した名刺のFactoryと商品の名刺

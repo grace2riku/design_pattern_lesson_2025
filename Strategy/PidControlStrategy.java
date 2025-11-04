@@ -2,6 +2,7 @@
 public class PidControlStrategy implements ControlStrategy {
 
     public PidControlStrategy() {
+        System.out.println("PID制御を開始します...");
     }
 
     @Override

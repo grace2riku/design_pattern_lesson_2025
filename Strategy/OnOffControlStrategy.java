@@ -2,6 +2,7 @@
 public class OnOffControlStrategy implements ControlStrategy {
 
     public OnOffControlStrategy() {
+        System.out.println("OnOff制御を開始します...");
     }
 
     @Override

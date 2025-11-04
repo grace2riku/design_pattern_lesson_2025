@@ -2,6 +2,7 @@
 public class FuzzyControlStrategy implements ControlStrategy {
 
     public FuzzyControlStrategy() {
+        System.out.println("ファジー制御を開始します...");
     }
 
     @Override

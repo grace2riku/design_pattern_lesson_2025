@@ -2,6 +2,7 @@
 public class MachineLearningControlStrategy implements ControlStrategy {
 
     public MachineLearningControlStrategy() {
+        System.out.println("機械学習制御を開始します...");
     }
 
     @Override

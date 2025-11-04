@@ -621,6 +621,221 @@ _footer: ""
 * スレッドセーフではない実装のまま進める場合は、ドキュメントにスレッドセーフではない旨を書いておいた方が良さそう。
 
 
+# Strategy
+<!--
+_footer: "" 
+-->
+* 参考資料1　章題　【アルゴリズムをごっそり切り替える】
+* Strategy: 戦略という意味
+* プログラミングの文脈においての戦略　≒　アルゴリズム
+*  アルゴリズムを切り替え、同じ問題を別の方法で解くのを容易にするパターン
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラムのテーマ
+[UMTP 組込みモデリング部会](https://umtp-japan.org/activity-report/6846)
+
+組込みモデリングカタログ
+部品編 -> **目標制御** をテーマとする。
+
+モデルの概要
+* 制御対象の測定値が目標値となるように制御する仕組み
+* 目標制御の適用例
+  * エアコンの温度制御
+  * 自動車の速度制御
+  * その他、多種多様多岐に渡る
+
+---
+<!--
+_footer: "" 
+-->
+目標制御のモデル解説
+
+参考資料4. [組込み分野のためのUML モデル解説書 部品編 C001 目標制御](https://umtp-japan.org/pdf/built/C001_TargetControl.pdf) 16ページ
+
+![bg right width:630 height:500px](img/目標制御_静的モデル_クラス構造.jpg)
+
+* 目標制御モデルの全体構造
+
+---
+<!--
+_footer: "" 
+-->
+目標制御の**制御方式**の解説
+
+参考資料4. [組込み分野のためのUML モデル解説書 部品編 C001 目標制御](https://umtp-japan.org/pdf/built/C001_TargetControl.pdf) 21ページ
+
+![bg right width:630 height:500px](img/目標制御_制御方式.jpg)
+
+* サンプルプログラムでは制御方式の各制御をStrategyパターンで表現する
+
+---
+<!--
+_footer: "" 
+-->
+今回実装したのは図の赤枠のメソッド
+* 開始する（start）、初期化（init）
+* StrategyパターンでPID制御の部分がON・OFF制御、ファジー制御、機械学習制御のバリエーションになる
+
+![bg right width:630 height:500px](img/シーケンス図_開始する.jpg)
+
+---
+<!--
+_footer: "" 
+-->
+今回実装したのは図の赤枠のメソッド
+* 実行する（execute）、操作量を算出する（CalcOperationAmount）
+
+![bg right width:650 height:600px](img/シーケンス図_制御中.jpg)
+
+---
+<!--
+_footer: "" 
+-->
+今回実装したのは図の赤枠のメソッド
+* 終了する（exit）
+
+![bg right width:630 height:500px](img/シーケンス図_終了する.jpg)
+
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラムのクラス図
+
+![bg right width:630 height:500px](img/Strategyサンプルプログラムのクラス図.png)
+
+サンプルプログラムのディレクトリ
+https://github.com/grace2riku/design_pattern_lesson_2025/tree/main/Strategy
+
+---
+<!--
+_footer: "" 
+-->
+各制御方式の詳細
+> 参考資料4. [組込み分野のためのUML モデル解説書 部品編 C001 目標制御](https://umtp-japan.org/pdf/built/C001_TargetControl.pdf) 34ページより引用
+
+![bg right width:630 height:500px](img/各制御方式の詳細.jpg)
+
+
+---
+<!--
+_footer: "" 
+-->
+
+Strategyパターンとビジネス活動の連携の例
+
+| 制御方式 | 実装コスト | 将来性 | Strategy適用例 |
+| :--- | :--- | :--- | :--- |
+| ON・OFF制御 | 低 | × | 社内ハード屋さん確認用にすぐリリースする |
+| PID制御 | 中 | × | 1stリリース |
+| ファジィ制御 | 高 | △ | 2ndリリース |
+| 機械学習制御 | 中 | ○ | ・販促。AI・機械学習と打ち出すと売れる（かもしれない）<br>・上位機種 |
+
+---
+<!--
+_footer: "" 
+-->
+**注意**
+
+* 今回Javaで目標制御のサンプルプログラムを書いたが、あくまでStrategyパターンを学ぶためのサンプルプログラム
+* ガベージコレクションがいつ実行されるかわからないJavaでリアルタイム性が求められる制御を普通はしない。
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラムのビルド方法
+サンプルプログラムのディレクトリ（Main.javaがあるディレクトリ）に移動しつぎのコマンドでビルドする。
+
+```
+$ javac Main.java 
+```
+
+プログラムの実行は制御方式の引数を指定する（つぎはON・OFF制御の場合）。
+```
+$ java Main onoff
+```
+
+---
+<!--
+_footer: "" 
+-->
+制御方式の引数の組合せ
+
+| 制御方式 | 引数 | コマンド |
+| :--- | :--- | :--- |
+| ON・OFF制御 | onoff | java Main onoff |
+| PID制御 | pid | java Main pid |
+| ファジィ制御 | fuzzy | java Main fuzzy |
+| 機械学習制御 | ml | java Main ml |
+
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラムの実行結果
+
+ON・OFF制御の実行結果
+```
+$ java Main onoff
+OnOff制御を開始します...
+OnOffControlStrategy init
+OnOffControlStrategy CalcOperationAmount
+```
+
+PID制御の実行結果
+```
+$ java Main pid
+PID制御を開始します...
+PidControlStrategy init
+PidControlStrategy CalcOperationAmount
+```
+---
+<!--
+_footer: "" 
+-->
+
+ファジー制御の実行結果
+```
+$ java Main fuzzy
+ファジー制御を開始します...
+FuzzyControlStrategy init
+FuzzyControlStrategy CalcOperationAmount
+```
+
+機械学習制御の実行結果
+```
+$ java Main ml
+機械学習制御を開始します...
+MachineLearningControlStrategy init
+MachineLearningControlStrategy CalcOperationAmount
+```
+
+---
+<!--
+_footer: "" 
+-->
+Strategyパターンの登場人物を抽象的に書く
+
+![bg right width:680 height:500px](img/Strategyパターン.png)
+
+---
+<!--
+_footer: "" 
+-->
+Strategyパターンのまとめ
+
+* アルゴリズムの切り替えを容易にする
+* 動的にアルゴリズムを切り替えてもよい
+* Strategyごとに開発メンバーをアサインし、パラレルで開発が進められたりできそう
+* ソフトウェア設計だけではなく、ビジネスの戦略としても使えそう
+
+
 # 参考資料
 <!--
 _footer: "" 
@@ -628,6 +843,7 @@ _footer: ""
 1. [Java言語で学ぶデザインパターン入門　第3版](https://www.hyuki.com/dp/)
 2. [直撃！デザインパターン](https://refactoring.guru/ja/design-patterns/book)
 3. [ぼくにもわかるデザインパターン　第2章 GoFパターン大カタログ ～パターンがみるみる頭にしみこむ～](https://www.ulsystems.co.jp/archives/028.html)
+4. [組込み分野のためのUML モデル解説書 部品編 C001 目標制御](https://umtp-japan.org/pdf/built/C001_TargetControl.pdf)
 
 
 ---

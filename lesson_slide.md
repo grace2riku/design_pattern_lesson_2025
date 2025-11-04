@@ -406,7 +406,7 @@ _footer: ""
 ![bg right width:600 height:500px](img/Singleton_PrintJob.png)
 
 サンプルプログラムのディレクトリ
-https://github.com/grace2riku/design_pattern_lesson/tree/main/lesson_1/Singleton/PrintJob
+https://github.com/grace2riku/design_pattern_lesson_2025/tree/main/Singleton/PrintJob
 
 
 ---
@@ -449,7 +449,7 @@ _footer: ""
 Singletonパターンの使いところ
 
 * インスタンスが1つであることを保証したい時
-  * 組込みソフトウェアのデバイスドライバなど。
+  * 組込みソフトウェアのデバイスドライバなど
   * データベースのアクセス
   * Factory MethodのFactory（インスタンスを作成する工場はひとつでよいことが多いと思う）
 
@@ -460,7 +460,7 @@ _footer: ""
 おまけ：Singletonの実装を変更してみる
 
 サンプルコード：
-https://github.com/grace2riku/design_pattern_lesson/tree/main/lesson_1/Singleton/PrintJob_2_1
+https://github.com/grace2riku/design_pattern_lesson_2025/tree/main/Singleton/PrintJob_2_1
 
 ---
 <!--
@@ -515,7 +515,7 @@ _footer: ""
 PrintJob_2_1をマルチスレッドで実行するように変更したコード（PrintJob_2_2）で動きを確かめてみる
 
 サンプルコード：
-https://github.com/grace2riku/design_pattern_lesson/tree/main/lesson_1/Singleton/PrintJob_2_2
+https://github.com/grace2riku/design_pattern_lesson_2025/tree/main/Singleton/PrintJob_2_2
 
 
 ---
@@ -572,7 +572,7 @@ PrintJob_2_2のコードでSingletonに対応する方法
 参考資料1に書かれていた手法を紹介する。
 
 コード
-https://github.com/grace2riku/design_pattern_lesson/tree/main/lesson_1/Singleton/PrintJob_2_3
+https://github.com/grace2riku/design_pattern_lesson_2025/tree/main/Singleton/PrintJob_2_3
 
 
 ---
@@ -607,8 +607,8 @@ PrintJob C: obj = PrintJob@386514c2
 ```
 
 * インスタンスが1個だけ作成されており、Singleton対応できていることが確認できた。
-* PrintJob_2_1のコードが基本形だと思う。
-PrintJob_2_1のコードをマルチスレッド環境で実行してもSingleton対応できている。
+* PrintJobのコードが基本形だと思う。
+PrintJobのコードをマルチスレッド環境で実行してもSingleton対応できている。
 
 ---
 <!--

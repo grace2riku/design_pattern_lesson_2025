@@ -835,6 +835,379 @@ Strategyパターンのまとめ
 * Strategyごとに開発メンバーをアサインし、パラレルで開発が進められたりできそう
 * ソフトウェア設計だけではなく、ビジネスの戦略としても使えそう
 
+# Facade
+<!--
+_footer: "" 
+-->
+* 参考資料1　章題　【シンプルな窓口】
+* Facadeのクラスはクラインアントにシンプルな処理の窓口を提供する。
+* Facadeのクラスはシステム内部のクラスを正しく利用する（システム内部のクラスの依存関係を理解・把握し、正しい処理の順番で実行する）。システム内部のごちゃごちゃをクライアントに見せない。
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラム例
+テーマ：参考資料1のWebページ（ユーザ名を表示するシンプルなもの）を作成するプログラム。
+Webページは以下の構造を持つ。
+* タイトル
+* 段落
+* リンク
+* メールアドレスのリンク
+
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラムのクラス図
+
+![bg right width:600 height:500px](img/Facade_fig.15-2.png)
+
+サンプルプログラムのディレクトリ
+
+https://github.com/grace2riku/design_pattern_lesson_2025/tree/main/Facade
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラムのビルド方法
+サンプルプログラムのディレクトリ（Main.javaがあるディレクトリ）に移動しつぎのコマンドでビルドする。
+
+```
+$ javac Main.java 
+```
+
+プログラムの実行はつぎのコマンドで行う。
+```
+$ java Main 
+```
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラムの実行結果
+
+```
+$ java Main
+welcome.html is created for k-abe@example.com (Koji Abe)
+```
+
+welcome.htmlの内容
+```html
+<!DOCTYPE html><html><head><title>Koji Abe's web page</title></head>
+<h1>Koji Abe's web page</h1>
+<p>Welcome to Koji Abe's web page!</p>
+<p>Nice to meet you!</p>
+<p><a href="mailto:k-abe@example.com">Koji Abe</a></p>
+</body></html>
+```
+
+---
+<!--
+_footer: "" 
+-->
+welcome.htmlをブラウザで表示したところ
+
+![](img/welcome.html_exec.jpg)
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラムの解説
+![bg width:800 height:500px](img/Facade_sample-code.png)
+
+
+---
+<!--
+_footer: "" 
+-->
+Facadeパターンの登場人物を抽象的に書く
+
+![bg right width:700 height:500px](img/Facade.png)
+
+---
+<!--
+_footer: "" 
+-->
+Facadeパターンのまとめ
+
+* システム内部の複雑さを単純にできる
+* シンプルな窓口を提供する→外部との結合が疎になる→部品として再利用できる
+
+
+# Observer
+<!--
+_footer: "" 
+-->
+* 参考資料1　章題　【状態の変化を通知する】
+* observerは、観察(observe)する人、観察者という意味とのこと
+* 観察対象の状態が変化したことを観察者に通知する。状態変化に応じた処理を記述するときに便利
+* Publish-Subscribeパターン（出版-購読）と呼ばれることもあるらしい。
+
+---
+<!--
+_footer: "" 
+-->
+ROS2のPublish-Subscriber通信
+> https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html
+![](img/Topic-MultiplePublisherandMultipleSubscriber.gif)
+
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラムの例
+テーマ: 数(0〜49のランダムな整数を20個)をObserverに通知する。通知を受けたObserverはそれぞれの方法で数を表示する。
+* Observer 1. DigitObserverは数字で数を表示する
+* Observer 2. GraphObserverはグラフ(*)で数を表示する
+
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラムのクラス図
+
+![bg right width:630 height:500px](img/Observer_Fig.17-1_サンプルプログラムのクラス図.png)
+
+サンプルプログラムのディレクトリ
+https://github.com/grace2riku/design_pattern_lesson_2025/tree/main/Observer
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラムのビルド方法
+サンプルプログラムのディレクトリ（Main.javaがあるディレクトリ）に移動しつぎのコマンドでビルドする。
+
+```
+$ javac Main.java 
+```
+
+プログラムの実行はつぎのコマンドで行う。
+```
+$ java Main 
+```
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラムの実行結果
+DigitObserverとGraphObserverの表示の組が20個あるが省略
+
+```
+$ java Main
+DigitObserver:9
+GraphObserver:*********
+DigitObserver:13
+GraphObserver:*************
+DigitObserver:30
+GraphObserver:******************************
+DigitObserver:23
+GraphObserver:***********************
+DigitObserver:34
+GraphObserver:**********************************
+```
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラムの解説
+
+![width:630 height:500px](img/Observer_Fig.17-1_サンプルプログラムのシーケンス図.png)
+
+
+---
+<!--
+_footer: "" 
+-->
+Observerパターンのまとめ
+
+* 状態変化を通知するときに使うと便利なパターン
+* 通知を出す側はObserverのことを知らない。RandomNumberGeneratorはObserverがDigitObserverかGraphObserverか知らない。
+* Observerは通知を出す側を知らない。DigitObserver・GraphObserverはRandomNumberGeneratorが通知を出していることを知らない。
+→知らないということはクラスを交換できる→変更容易性を高める設計ができる
+
+
+# State
+<!--
+_footer: "" 
+-->
+* 参考資料1　章題　【状態をクラスとして表現する】
+* クラスを切り替えると状態の変化を表せる→どんな良いことがあるかは後述します
+
+---
+<!--
+_footer: "" 
+-->
+Stateパターンのサンプルプログラム例
+テーマ：参考資料1の金庫警備システム
+
+![width:1000 height:500px](img/State_sample_request.png)
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラムのクラス図
+
+![bg right width:600 height:500px](img/State_Fig.19-3_クラス図.png)
+
+サンプルプログラムのディレクトリ
+https://github.com/grace2riku/design_pattern_lesson_2025/tree/main/State
+
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラムのビルド方法
+サンプルプログラムのディレクトリ（Main.javaがあるディレクトリ）に移動しつぎのコマンドでビルドする。
+
+```
+$ javac Main.java 
+```
+
+プログラムの実行はつぎのコマンドで行う。
+```
+$ java Main 
+```
+
+---
+<!--
+_footer: "" 
+-->
+Stateサンプルプログラムの実行結果
+* ターミナルの表示。1秒で1時間経過するようになっている。
+
+```
+$ java Main
+現在時刻は00:00
+[昼間]から[夜間]へ状態が変化しました。
+現在時刻は01:00
+現在時刻は02:00
+現在時刻は03:00
+現在時刻は04:00
+現在時刻は05:00
+現在時刻は06:00
+java.awt.event.ActionEvent[ACTION_PERFORMED,cmd=金庫使用,when=1737462816012,modifiers=Button1] on button0
+現在時刻は07:00
+java.awt.event.ActionEvent[ACTION_PERFORMED,cmd=非常ベル,when=1737462817221,modifiers=Button1] on button1
+現在時刻は08:00
+java.awt.event.ActionEvent[ACTION_PERFORMED,cmd=通常通話,when=1737462818118,modifiers=Button1] on button2
+現在時刻は09:00
+[夜間]から[昼間]へ状態が変化しました。
+現在時刻は10:00
+```
+
+---
+<!--
+_footer: "" 
+-->
+* GUIの表示。金庫・非常ベル・電話の使用で昼間・夜間の状態に応じたメッセージが表示される。
+
+![width:1000 height:500px](img/State_sample_request.png)
+
+---
+<!--
+_footer: "" 
+-->
+* サンプルプログラムの解説の前にStateパターンを使わない場合（状態をクラスとしない場合）、昼間・夜間で金庫・非常ベル・電話の使用時の振る舞いをどう実装するか考えてみましょう。
+
+---
+<!--
+_footer: "" 
+-->
+* Stateパターンを使わない場合（状態をクラスとしない場合）にありそうな実装例
+
+```java
+  金庫使用時に呼ばれるメソッド() {
+    if (昼間) {
+      // 警備センターに利用の記録
+    } else if (夜間) {
+      // 警備センターに非常事態の通報
+    }
+  }
+
+  // 非常ベル、通常通話使用時のメソッドは省略
+```
+
+* メソッドの中に状態のif文がある→コードが複雑になる要因のひとつ
+
+---
+<!--
+_footer: "" 
+-->
+* Stateパターンを使わない場合（状態をクラスとしない場合）にありそうな実装例
+もし、【メンテナンス中】の状態が追加されたらどうなる???
+
+```diff_java
+  金庫使用時に呼ばれるメソッド() {
+    if (昼間) {
+      // 警備センターに利用の記録
+    } else if (夜間) {
+      // 警備センターに非常事態の通報
+    } else if (メンテナンス中) {
+      // メンテナンス中の振る舞い
+    }
+  }
+
+  // 非常ベル、通常通話使用時のメソッドも同様に状態を追加する
+```
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラムの解説
+
+Stateパターン(DayState, NightState)では前ページの実装と違い、**Stateパターンのクラスの中に**必要な振る舞い
+
+* doClock
+* doUse
+* doAlarm
+* doPhone
+
+が書かれており、状態判断のif文が登場しない。
+Stateパターンは状態の追加に前述の実装例より容易に対応できる。
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラムの解説
+
+つぎの場合のシーケンス図
+* 昼間に金庫を使用した場合(DayStateのdoUseを呼び出し)
+* 時間経過で昼間から夜間になった後に金庫を使用した場合(NightStateのdoUseを呼び出し)
+
+![bg right width:600 height:500px](img/State_Fig.19-4_シーケンス図.png)
+
+---
+<!--
+_footer: "" 
+-->
+サンプルプログラムの解説
+
+DayState, NightStateはSingletonパターンを適用し、インスタンスが1個しか生成できないようにしている。
+プログラムを複雑化させない良いアプローチだと思う。
+
+---
+<!--
+_footer: "" 
+-->
+Stateパターンのまとめ
+
+* 状態をクラスとして表現した。クラスの中に必要な処理を書いた。結果、状態遷移判定のif文をなくすことができた
+* 状態の追加に容易に対応できる変更しやすい構造にできた
+
 
 # 参考資料
 <!--

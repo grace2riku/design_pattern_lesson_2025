@@ -4,7 +4,7 @@ theme: gaia
 size: 16:9
 paginate: true
 headingDivider: 2
-header: デザインパターンをソフトウェア設計に生かそう
+header: デザインパターンをソフトウェア設計に生かそう（2025年11月）
 footer: 2025 @juraruming
 style: |
 ---

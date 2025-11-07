@@ -1,6 +1,3 @@
-# Merpで生成したPDF
-*.pdf
-
 # astah
 *.lock
 
